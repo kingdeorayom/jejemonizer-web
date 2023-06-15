@@ -33,6 +33,7 @@ const Jejemonizer = () => {
 
     const resetJejemonizer = () => {
         inputRef.current.value = "";
+        setIsCopied(false)
         setJejemonText('')
     }
 
