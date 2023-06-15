@@ -1,0 +1,28 @@
+.footer {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.icon {
+  margin: 10px 20px;
+}
+
+.link {
+  color: #2557a7;
+  font-weight: 400;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
