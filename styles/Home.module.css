@@ -23,13 +23,26 @@
 .input {
   margin: 25px 0 10px 0;
   border: 0.5px solid #d3d3d3;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .result {
   margin: 20px 0;
   border: 0.5px solid #d3d3d3;
   background-color: #fafafa;
+}
+
+.alertWrapper {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.success {
+  color: #28a745;
+}
+
+.error {
+  color: #cc3d37;
 }
 
 .buttonContainer {
@@ -59,7 +72,7 @@
 }
 
 .resetButton {
-  background-color: #fff;
+  background-color: #ffffff;
   color: #505050;
   margin-top: 10px;
   margin-bottom: 2px;

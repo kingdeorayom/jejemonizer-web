@@ -2,14 +2,18 @@ import { useRef, useState } from 'react';
 import { useOpenSans } from '@/utils/fonts';
 import dictionary from '@/utils/dictionary';
 import styles from '@/styles/Home.module.css'
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const Jejemonizer = () => {
 
     const inputRef = useRef();
 
     const [jejemonText, setJejemonText] = useState('')
+    const [isCopied, setIsCopied] = useState(false)
 
     const jejemonize = (input) => {
+
+        setIsCopied(false)
 
         let jejemonized =
 
@@ -32,10 +36,13 @@ const Jejemonizer = () => {
         setJejemonText('')
     }
 
-    const copyToClipboard = () => navigator.clipboard.writeText(jejemonText)
+    const copyToClipboard = () => {
+        setIsCopied(true)
+    }
 
     return (
         <section>
+
             <textarea
                 ref={inputRef}
                 className={`${useOpenSans.className} ${styles.input}`}
@@ -44,6 +51,7 @@ const Jejemonizer = () => {
                 rows={3}
                 onChange={(input) => jejemonize(input.target.value)}
             />
+
             <label>Result:</label>
             <textarea
                 className={`${useOpenSans.className} ${styles.result}`}
@@ -53,14 +61,28 @@ const Jejemonizer = () => {
                 value={jejemonText}
                 disabled
             />
+
+            {
+                isCopied ?
+                    <div className={styles.alertWrapper}>
+                        {
+                            jejemonText.length !== 0 ?
+                                <label className={styles.success}>Copied!</label> :
+                                <label className={styles.error}>Type something!</label>
+                        }
+                    </div> :
+                    null
+            }
+
             <div className={styles.buttonContainer}>
-                <button
-                    onClick={copyToClipboard}
-                    className={`${useOpenSans.className} ${styles.clipboardButton}`}
-                >
-                    Copy result to clipboard
-                </button>
+                <CopyToClipboard text={jejemonText} onCopy={copyToClipboard}>
+                    <button className={`${useOpenSans.className} ${styles.clipboardButton}`}
+                    >
+                        Copy result to clipboard
+                    </button>
+                </CopyToClipboard>
             </div>
+
             <div className={styles.buttonContainer}>
                 <button
                     onClick={resetJejemonizer}
@@ -69,6 +91,7 @@ const Jejemonizer = () => {
                     Reset Jejemonizer
                 </button>
             </div>
+
         </section>
     )
 }
