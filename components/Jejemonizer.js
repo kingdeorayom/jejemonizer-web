@@ -49,6 +49,7 @@ const Jejemonizer = () => {
                 className={`${useOpenSans.className} ${styles.input}`}
                 placeholder='Enter text here to Jejemonize...'
                 aria-multiline
+                autoFocus
                 rows={3}
                 onChange={(input) => jejemonize(input.target.value)}
             />
